@@ -113,7 +113,7 @@ def as_bootstrap(form_or_field, layout='vertical,false'):
         })
     else:
         # Display the default
-        return settings.TEMPLATE_STRING_IF_INVALID
+        return settings.TEMPLATES[0]['OPTIONS']['string_if_invalid']
 
 
 @register.filter
