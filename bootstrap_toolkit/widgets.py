@@ -32,7 +32,7 @@ def add_to_css_class(classes, new_class):
         # Remove empty elements
         classes = filter(None, classes)
         # Test for existing
-        if not new_class in classes:
+        if new_class not in classes:
             classes.append(new_class)
             # Convert to string
         classes = u' '.join(classes)

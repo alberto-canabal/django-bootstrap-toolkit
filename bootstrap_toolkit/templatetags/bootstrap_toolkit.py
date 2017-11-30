@@ -13,24 +13,29 @@ from django.utils.safestring import mark_safe
 from django.utils.html import escape
 
 
-BOOTSTRAP_BASE_URL = getattr(settings, 'BOOTSTRAP_BASE_URL',
-                             '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/'
+BOOTSTRAP_BASE_URL = getattr(
+    settings, 'BOOTSTRAP_BASE_URL',
+    '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/'
 )
 
-BOOTSTRAP_JS_BASE_URL = getattr(settings, 'BOOTSTRAP_JS_BASE_URL',
-                                BOOTSTRAP_BASE_URL + 'js/'
+BOOTSTRAP_JS_BASE_URL = getattr(
+    settings, 'BOOTSTRAP_JS_BASE_URL',
+    BOOTSTRAP_BASE_URL + 'js/'
 )
 
-BOOTSTRAP_JS_URL = getattr(settings, 'BOOTSTRAP_JS_URL',
-                           None
+BOOTSTRAP_JS_URL = getattr(
+    settings, 'BOOTSTRAP_JS_URL',
+    None
 )
 
-BOOTSTRAP_CSS_BASE_URL = getattr(settings, 'BOOTSTRAP_CSS_BASE_URL',
-                                 BOOTSTRAP_BASE_URL + 'css/'
+BOOTSTRAP_CSS_BASE_URL = getattr(
+    settings, 'BOOTSTRAP_CSS_BASE_URL',
+    BOOTSTRAP_BASE_URL + 'css/'
 )
 
-BOOTSTRAP_CSS_URL = getattr(settings, 'BOOTSTRAP_CSS_URL',
-                            BOOTSTRAP_CSS_BASE_URL + 'bootstrap.css'
+BOOTSTRAP_CSS_URL = getattr(
+    settings, 'BOOTSTRAP_CSS_URL',
+    BOOTSTRAP_CSS_BASE_URL + 'bootstrap.css'
 )
 
 register = template.Library()
@@ -144,7 +149,7 @@ def bootstrap_input_type(field):
     """
     try:
         widget = field.field.widget
-    except:
+    except Exception:
         raise ValueError("Expected a Field, got a %s" % type(field))
     input_type = getattr(widget, 'bootstrap_input_type', None)
     if input_type:
