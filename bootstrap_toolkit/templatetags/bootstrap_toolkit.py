@@ -100,21 +100,17 @@ def as_bootstrap(form_or_field, layout='vertical,false'):
         bootstrap_float = False
 
     if isinstance(form_or_field, BaseForm):
-        return get_template("bootstrap_toolkit/form.html").render(
-            Context({
-                'form': form_or_field,
-                'layout': layout,
-                'float': bootstrap_float,
-            })
-        )
+        return get_template("bootstrap_toolkit/form.html").render({
+            'form': form_or_field,
+            'layout': layout,
+            'float': bootstrap_float,
+        })
     elif isinstance(form_or_field, BoundField):
-        return get_template("bootstrap_toolkit/field.html").render(
-            Context({
-                'field': form_or_field,
-                'layout': layout,
-                'float': bootstrap_float,
-            })
-        )
+        return get_template("bootstrap_toolkit/field.html").render({
+            'field': form_or_field,
+            'layout': layout,
+            'float': bootstrap_float,
+        })
     else:
         # Display the default
         return settings.TEMPLATE_STRING_IF_INVALID
