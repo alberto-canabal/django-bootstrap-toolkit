@@ -5,7 +5,6 @@ from math import floor
 from django.forms import BaseForm
 from django.forms.forms import BoundField
 from django.forms.widgets import TextInput, CheckboxInput, CheckboxSelectMultiple, RadioSelect
-from django.template import Context
 from django.template.loader import get_template
 from django import template
 from django.conf import settings
@@ -175,7 +174,7 @@ def pagination(page, pages_to_show=11):
     Generate Bootstrap pagination links from a page object
     """
     context = get_pagination_context(page, pages_to_show)
-    return get_template("bootstrap_toolkit/pagination.html").render(Context(context))
+    return get_template("bootstrap_toolkit/pagination.html").render(context)
 
 
 @register.filter
