@@ -1,4 +1,4 @@
-<div class="control-group{% if field.errors %} error{% endif %}{% if field.field.required %} required{% endif %}">
+<div class="control-group{% if field.errors %} error{% endif %}">
     {% if input_type == "checkbox" %}
         <div class="controls">
             {% include "bootstrap_toolkit/field_checkbox.html" %}
@@ -7,7 +7,7 @@
         </div>
     {% else %}
         {% if input_type == "multicheckbox" %}
-            <label class="control-label">{{ field.label }}</label>
+            <label class="control-label">{{ field.label }} {% if field.field.required %}<span class="required">*</span>{% endif %}</label>
             <div class="controls">
                 {% include "bootstrap_toolkit/field_choices.html" with type="checkbox" %}
                 {% include "bootstrap_toolkit/field_help.html" with display="block" %}
@@ -15,14 +15,14 @@
             </div>
         {% else %}
             {% if input_type == "radioset" %}
-                <label class="control-label">{{ field.label }}</label>
+                <label class="control-label">{{ field.label }} {% if field.field.required %}<span class="required">*</span>{% endif %}</label>
                 <div class="controls">
                     {% include "bootstrap_toolkit/field_choices.html" with type="radio" %}
                     {% include "bootstrap_toolkit/field_help.html" with display="block" %}
                     {% include "bootstrap_toolkit/field_errors.html" with display="block" %}
                 </div>
             {% else %}
-                <label class="control-label"{% if field.auto_id %} for="{{ field.auto_id }}"{% endif %}>{{ field.label }}</label>
+                <label class="control-label"{% if field.auto_id %} for="{{ field.auto_id }}"{% endif %}>{{ field.label }} {% if field.field.required %}<span class="required">*</span>{% endif %}</label>
                 <div class="controls">
                     {% include "bootstrap_toolkit/field_default.html" %}
                     {% include "bootstrap_toolkit/field_help.html" with display="inline" %}
